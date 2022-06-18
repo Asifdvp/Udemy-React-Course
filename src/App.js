@@ -2,21 +2,26 @@ import "./App.css";
 import Navi from "./Navi";
 import ProductList from "./ProductList";
 import CategoryList from "./CategoryList";
-import { Container, Row } from "reactstrap";
-
+import { Container,Row,Col } from "reactstrap";
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 function App() {
   return (
-    <div className="App">
+    <div>
       <Container>
         <Row>
-          {" "}
-          <Navi />{" "}
+          <Navi/>
         </Row>
-        <Row>
-          {" "}
-          <ProductList />
-          <CategoryList />{" "}
-        </Row>
+<Row> 
+<Col xs="3"> <CategoryList /> </Col>
+<Col xs="9">   <ProductList />  </Col>
+  
+  
+  </Row>
+      
+         
+        
       </Container>
     </div>
   );
