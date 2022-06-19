@@ -7,6 +7,8 @@ import { Container,Row,Col } from "reactstrap";
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
 function App() {
+ let  categoryInfo = {title:"Category List"};
+ let  productInfo = {title: "Product List"};
   return (
     <div>
       <Container>
@@ -14,8 +16,8 @@ function App() {
           <Navi/>
         </Row>
 <Row> 
-<Col xs="3"> <CategoryList /> </Col>
-<Col xs="9">   <ProductList />  </Col>
+<Col xs="3"> <CategoryList  info={categoryInfo} /> </Col>
+<Col xs="9">  <ProductList info={productInfo}  />  </Col>
   
   
   </Row>
