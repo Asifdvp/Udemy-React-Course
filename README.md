@@ -16,3 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 download react bootstrap
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// bazani start edende xeta verdi asagidaki kodu terminala yazanda duzeldi
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
