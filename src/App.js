@@ -3,12 +3,19 @@ import Navi from "./Navi";
 import ProductList from "./ProductList";
 import CategoryList from "./CategoryList";
 import { Container, Row, Col } from "reactstrap";
+import React from "react";
 // import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
-function App() {
-  let categoryInfo = { title: "Category List" };
-  let productInfo =  { title: "Product List" };
+ class App extends React.Component {
+  state = {    currentCategory:""
+  }
+ changeCategory = category => {
+    this.setState({ currentCategory: category.categoryName });
+  };
+  render(){
+   let  categoryInfo = { title: "Category List" };
+   let productInfo =  { title: "Product List" };
   return (
     <div>
       <Container>
@@ -18,16 +25,22 @@ function App() {
         <Row>
           <Col xs="3">
             {" "}
-            <CategoryList info={categoryInfo} />{" "}
+            <CategoryList 
+            getCurrentCategory={this.state.currentCategory}
+            info={categoryInfo} 
+            changeCategory = {this.changeCategory} />{" "}
           </Col>
           <Col xs="9">
             {" "}
-            <ProductList info={productInfo} />{" "}
+            <ProductList 
+             getCurrentCategory={this.state.currentCategory}
+            info={productInfo} 
+            />{" "}
           </Col>
         </Row>
       </Container>
     </div>
-  );
+  )};
 }
 
 export default App;
