@@ -8,11 +8,19 @@ import React from "react";
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
  class App extends React.Component {
-  state = {    currentCategory:""
+  state = {  
+      currentCategory:"",
+  products:[]
   }
  changeCategory = category => {
     this.setState({ currentCategory: category.categoryName });
+this.filterProducts(category)
   };
+  filterProducts = (category) =>{
+    fetch(`http://localhost:3000/products?categoryId=${category.id}`)
+    .then(res=>res.json())
+    .then(data=>this.setState({products:data}))
+  }
   render(){
    let  categoryInfo = { title: "Category List" };
    let productInfo =  { title: "Product List" };
@@ -33,6 +41,7 @@ import React from "react";
           <Col xs="9">
             {" "}
             <ProductList 
+            data={this.state.products}
              getCurrentCategory={this.state.currentCategory}
             info={productInfo} 
             />{" "}
