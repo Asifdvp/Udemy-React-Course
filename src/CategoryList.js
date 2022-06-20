@@ -8,7 +8,15 @@ export default class CategoryList extends Component {
     ]
 
   };
-
+  
+getCategories =() =>{
+  fetch("http://localhost:3000/categories")
+  .then(res=>res.json())
+  .then(data => this.setState({categories:data}))
+}
+componentDidMount(){
+    this.getCategories()
+}
   render() {
     return (
       <div>
