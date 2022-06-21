@@ -15,11 +15,30 @@ import React from "react";
  changeCategory = category => {
     this.setState({ currentCategory: category.categoryName });
 this.filterProducts(category)
+// this.getProducts(category.seoUrl)
   };
   filterProducts = (category) =>{
-    fetch(`http://localhost:3000/products?categoryId=${category.id}`)
+    let url = "http://localhost:3000/products"
+    if(category){
+url+= "?categoryId=" + category.id
+// console.log(url)
+    }
+
+    fetch(url)
     .then(res=>res.json())
     .then(data=>this.setState({products:data}))
+  }
+  getProducts = (seoUrl) =>{
+    let url = "http://localhost:3000/products"
+    if(seoUrl){
+      url += "/" + seoUrl
+    }
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>this.setState({products:data}))
+  }
+  componentDidMount(){
+  this.filterProducts()
   }
   render(){
    let  categoryInfo = { title: "Category List" };
