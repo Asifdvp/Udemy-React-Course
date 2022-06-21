@@ -23,6 +23,7 @@ componentDidMount(){
           {this.state.categories.map((category) => (
             <ListGroupItem
             active={category.categoryName === this.props.getCurrentCategory?true : false}
+            
               onClick={() => this.props.changeCategory(category)}
               key={category.id}
               action
