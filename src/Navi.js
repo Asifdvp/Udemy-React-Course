@@ -16,7 +16,7 @@ export default class Navi extends Component {
     return (
       <div>
         <Navbar color="light" expand="md" light>
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand href="/">NorthWind App</NavbarBrand>
           <NavbarToggler onClick={function noRefCheck() {}} />
           <Navbar>
             <Nav className="me-auto" navbar>
@@ -30,14 +30,22 @@ export default class Navi extends Component {
               </NavItem>
               <UncontrolledDropdown inNavbar nav>
                 <DropdownToggle caret nav>
-                  Options
+                  Options - {this.props.cards.length}
                 </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
-                </DropdownMenu>
+                {this.props.cards.length !== 0 ? (
+                  <DropdownMenu right>
+                    {this.props.cards.map((card) => (
+                      <DropdownItem key={card.product.id}>{card.product.productName} - {card.quantity} </DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                ) : (
+                null
+                )}
+
+
+
+
+
               </UncontrolledDropdown>
             </Nav>
           </Navbar>

@@ -14,11 +14,18 @@ import React from "react";
   addToCard:[]
   }
 //elemenmtin sebete elave olunmasi
-addToCard = productName =>{
-  alert(productName);
-  let cards=this.state.addToCard;
-  cards.push(productName);
+addToCard = product =>{
 
+  let cards=this.state.addToCard;
+  const addedItem = cards.find(item=>item.product.id === product.id)
+  //eger bir elemente birden cox bassaq onda elave olunmayacaq
+  if(addedItem){
+    addedItem.quantity+=1
+  }
+  else{
+    cards.push({product:product,quantity:1});
+  }
+ 
   this.setState({addToCard:cards})
 }
 
