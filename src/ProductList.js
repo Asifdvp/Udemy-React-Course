@@ -9,7 +9,9 @@ export default class ProductList extends Component {
   // componentDidMount(){
   //  this.setState({products:this.props.data})
   // }
+  
   render() {
+   
     return (
       <div>
         <h1>
@@ -39,7 +41,7 @@ export default class ProductList extends Component {
                 <td> {product.unitsInStock}</td>
                 <td>
                   {" "}
-                  <Button color="info">Add</Button>
+                  <Button color="info" onClick={()=>this.props.addToCard(product.productName)}>Add</Button>
                 </td>
               </tr>
             ))}

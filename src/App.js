@@ -10,8 +10,19 @@ import React from "react";
  class App extends React.Component {
   state = {  
       currentCategory:"",
-  products:[]
+  products:[],
+  addToCard:[]
   }
+//elemenmtin sebete elave olunmasi
+addToCard = productName =>{
+  alert(productName);
+  let cards=this.state.addToCard;
+  cards.push(productName);
+
+  this.setState({addToCard:cards})
+}
+
+//category uzre filterleme
  changeCategory = category => {
     this.setState({ currentCategory: category.categoryName });
 this.filterProducts(category)
@@ -47,7 +58,7 @@ url+= "?categoryId=" + category.id
     <div>
       <Container>
         <Row>
-          <Navi />
+          <Navi cards={this.state.addToCard} />
         </Row>
         <Row>
           <Col xs="3">
@@ -63,6 +74,7 @@ url+= "?categoryId=" + category.id
             data={this.state.products}
              getCurrentCategory={this.state.currentCategory}
             info={productInfo} 
+            addToCard={this.addToCard}
             />{" "}
           </Col>
         </Row>
