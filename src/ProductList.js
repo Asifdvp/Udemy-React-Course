@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 
 export default class ProductList extends Component {
   state = {
@@ -25,6 +25,7 @@ export default class ProductList extends Component {
               <th>Quantity Per Unit</th>
 
               <th>Units In Stock</th>
+              <th> </th>
             </tr>
           </thead>
           <tbody>
@@ -36,6 +37,10 @@ export default class ProductList extends Component {
                 <td> {product.quantityPerUnit}</td>
 
                 <td> {product.unitsInStock}</td>
+                <td>
+                  {" "}
+                  <Button color="info">Add</Button>
+                </td>
               </tr>
             ))}
           </tbody>
